@@ -117,5 +117,10 @@ body {
     background-color: #F0F0F0;
     transform: rotateX(-45deg);
     margin: 5px 0 40px 0;
-    box-shadow: 0 3px 5px whitesmoke;
+    box-shadow: 1px 1px 5px 5px rgb(204, 201, 201);
+}
+
+.image {
+    width: 100%;
+    height: 70px;
 }
