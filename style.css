@@ -118,6 +118,7 @@ body {
     transform: rotateX(-45deg);
     margin: 5px 0 40px 0;
     box-shadow: 0 0 8px 4px whitesmoke;
+    box-shadow: 1px 1px 5px 5px rgb(204, 201, 201);
 }
 
 .image {
