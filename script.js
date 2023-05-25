@@ -9,8 +9,7 @@ populateUI();
 
 let ticketPrice = +selectMovie.value;
 
-const posters = ["./Images/ThePurge.jpg", "./Images/Fast9.jpg", "./Images/HarryPotter.jpg", "./Images/TheConjuring.jpg", "./Images/MIP.jpg"];
-console.log(posters);
+const posters = ['./Images/ThePurge.jpg', './Images/Fast9.jpg', './Images/HarryPotter.jpg', './Images/TheConjuring.jpg', './Images/MIP.jpg'];
 
 function updateSelectedSeats() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
@@ -41,11 +40,6 @@ function populateUI() {
     if (selectedMovie > -1) {
         selectMovie.selectedIndex = selectedMovie
     }
-    if (selectedPoster !== null) {
-        const selectedPoster = localStorage.getItem('moviePoster');
-        image.src = selectedPoster;
-        console.log(selectedPoster);
-    } else {
 
     const selectedPoster = localStorage.getItem('selectedPoster');
     console.log(selectedPoster);
@@ -66,29 +60,6 @@ selectMovie.addEventListener('change', e => {
     ticketPrice = +e.target.value;
     changeMovie(e.target.selectedIndex, e.target.value);
     updateSelectedSeats();
-    const movieValue = selectMovie.options[selectMovie.selectedIndex].value;
-    console.log(movieValue);
-    switch (movieValue) {
-        case "50":
-            image.setAttribute('src', posters[0])
-            break;
-        case "35":
-            image.setAttribute('src', posters[1])
-            break;
-        case "10":
-            image.setAttribute('src', posters[2])
-            break;
-        case "20":
-            image.setAttribute('src', posters[3])
-            break;
-        case "30":
-            image.setAttribute('src', posters[4])
-            break;
-        default:
-            break;
-    }
-    localStorage.setItem('moviePoster', image.src);
-
     const posterValue = selectMovie.options[selectMovie.selectedIndex].value;
     console.log(posterValue);
     switch (posterValue) {
@@ -115,4 +86,4 @@ selectMovie.addEventListener('change', e => {
     localStorage.setItem('selectedPoster', images.src)
 })
 
-updateSelectedSeats()
+updateSelectedSeats();
