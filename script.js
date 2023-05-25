@@ -3,10 +3,13 @@ const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const selectMovie = document.getElementById('movie');
 const count = document.getElementById('count');
 const totalCount = document.getElementById('total');
+const images = document.querySelector('.image')
 
 populateUI();
 
 let ticketPrice = +selectMovie.value;
+
+const posters = ['./Images/ThePurge.jpg', './Images/Fast9.jpg', './Images/HarryPotter.jpg', './Images/TheConjuring.jpg', './Images/MIP.jpg'];
 
 function updateSelectedSeats() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
@@ -36,7 +39,14 @@ function populateUI() {
     const selectedMovie = localStorage.getItem('movieIndex');
     if (selectedMovie > -1) {
         selectMovie.selectedIndex = selectedMovie
-    } 
+    }
+
+    const selectedPoster = localStorage.getItem('selectedPoster');
+    console.log(selectedPoster);
+    if (selectedPoster !== null) {
+        images.src = selectedPoster;
+        console.log('true');
+    }
 }
 
 container.addEventListener('click', e => {
@@ -50,6 +60,30 @@ selectMovie.addEventListener('change', e => {
     ticketPrice = +e.target.value;
     changeMovie(e.target.selectedIndex, e.target.value);
     updateSelectedSeats();
+    const posterValue = selectMovie.options[selectMovie.selectedIndex].value;
+    console.log(posterValue);
+    switch (posterValue) {
+        case "50":
+            images.setAttribute('src', posters[0])
+            break;
+        case "35":
+            images.setAttribute('src', posters[1])
+            break;
+        case "10":
+            images.setAttribute('src', posters[2])
+            break;
+        case "20":
+            images.setAttribute('src', posters[3])
+            break;
+        case "30":
+            images.setAttribute('src', posters[4])
+            break;
+    
+        default:
+            break;
+    }
+    console.log(images);
+    localStorage.setItem('selectedPoster', images.src)
 })
 
 updateSelectedSeats();
