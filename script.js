@@ -3,13 +3,18 @@ const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const selectMovie = document.getElementById('movie');
 const count = document.getElementById('count');
 const totalCount = document.getElementById('total');
-const images = document.querySelector('.image')
+const images = document.querySelector('.image');
+const screen = document.getElementById('screen');
+const video = document.querySelector('.video');
+console.log(video);
 
 populateUI();
 
 let ticketPrice = +selectMovie.value;
 
 const posters = ['./Images/ThePurge.jpg', './Images/Fast9.jpg', './Images/HarryPotter.jpg', './Images/TheConjuring.jpg', './Images/MIP.jpg'];
+const trailers = ['./Videos/HarryPotter Trailer.mp4', './Videos/FastandFurious 9 Trailer.mp4'];
+console.log(trailers);
 
 function updateSelectedSeats() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
@@ -84,6 +89,10 @@ selectMovie.addEventListener('change', e => {
     }
     console.log(images);
     localStorage.setItem('selectedPoster', images.src)
+})
+
+screen.addEventListener('click', e => {
+    video.style.display = 'block';
 })
 
 updateSelectedSeats();
