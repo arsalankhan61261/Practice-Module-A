@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    margin: 0;
+    background-color: #4b5857;
+}
+
+h1 {
+    color: #ECF8F9;
+}
+
+.video {
+    cursor: pointer;
+    width: 60%;
+    background-color: black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.controls {
+    background-color: #8BACAA;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.progressBar {
+    width: 100%;
+    outline: none;
+    height: 4px;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
+
+.btn .fa-circle-play {
+    color: #1A43B7;
+}
+
+.btn .fa-circle-stop {
+    color: #E00B1B;
+}
+
+.time {
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+@media (max-width: 500px) {
+    .video, .controls {
+        width: 90%;
+    }
+}

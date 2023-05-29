@@ -164,4 +164,8 @@ body {
     .video video {
         width:95%;
     }
+    .cross {
+        top: 50px;
+        right: 10px;
+    }
 }
