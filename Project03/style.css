@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     max-height: 100vh;
     margin: 0;
-    background-color: #4b5857;
+    background-color: #9BABB8;
 }
 
 h1 {
@@ -28,7 +28,7 @@ h1 {
 }
 
 .controls {
-    background-color: #8BACAA;
+    background-color: #ECF8F9;
     width: 60%;
     display: flex;
     align-items: center;
@@ -39,10 +39,41 @@ h1 {
 }
 
 .progressBar {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
     width: 100%;
     outline: none;
-    height: 4px;
+    height: 6px;
     cursor: pointer;
+    background-color: #575f70;
+    border-radius: 4px;
+}
+
+.progressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #575f70;
+    cursor: pointer;
+}
+
+.progressBar::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgb(165, 113, 113);
+    cursor: pointer;
+}
+
+.controls input::-moz-range-progress {
+    width: 100%;
+    outline: none;
+    height: 6px;
+    cursor: pointer;
+    background-color: rgb(151, 111, 111);
+    border-radius: 4px;
 }
 
 .btn {

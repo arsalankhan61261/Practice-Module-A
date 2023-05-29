@@ -21,15 +21,32 @@ function updateIcon() {
 }
 
 function updateProgess() {
-    return true;
+    progressBar.value = (video.currentTime / video.duration) * 100;
+
+    let minutes = Math.floor(video.currentTime / 60);
+    if ( minutes < 10 ) {
+        minutes = '0' + String(minutes);
+    }
+
+    let seconds = Math.floor(video.currentTime % 60);
+    if ( seconds < 10 ) {
+        seconds = '0' + String(seconds);
+    }
+
+    time.innerHTML = `${minutes}:${seconds}`;
+
+    // if ( video.currentTime > 0 ) {
+    //     progressBar.classList.add('increase')
+    // }
 }
 
 function stopVideo() {
-    return true;
+    video.currentTime = 0;
+    video.pause();
 }
 
 function setVideoProgress() {
-    return true;
+    video.currentTime = (+progressBar.value * video.duration) / 100;
 }
 
 video.addEventListener('click', toggleVideoStatus);
@@ -41,4 +58,4 @@ playButton.addEventListener('click', toggleVideoStatus);
 
 stopButton.addEventListener('click', stopVideo);
 
-progressBar.addEventListener('update', setVideoProgress);
+progressBar.addEventListener('change', setVideoProgress);
