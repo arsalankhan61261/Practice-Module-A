@@ -3,6 +3,8 @@ const playButton = document.getElementById('playBtn');
 const stopButton = document.getElementById('stopBtn');
 const progressBar = document.getElementById('progressBar');
 const time = document.getElementById('time');
+const controls = document.getElementById('controls');
+
 
 function toggleVideoStatus() {
     if ( video.paused ) {
@@ -34,10 +36,6 @@ function updateProgess() {
     }
 
     time.innerHTML = `${minutes}:${seconds}`;
-
-    // if ( video.currentTime > 0 ) {
-    //     progressBar.classList.add('increase')
-    // }
 }
 
 function stopVideo() {
@@ -49,10 +47,20 @@ function setVideoProgress() {
     video.currentTime = (+progressBar.value * video.duration) / 100;
 }
 
+// function showControls() {
+//     controls.style.visibility = 'visible';
+// }
+
+// function hideControls() {
+//     controls.style.visibility = 'hidden ';
+// }
+
 video.addEventListener('click', toggleVideoStatus);
 video.addEventListener('pause', updateIcon);
 video.addEventListener('play', updateIcon);
 video.addEventListener('timeupdate', updateProgess);
+// video.addEventListener('mouseover', showControls);
+// video.addEventListener('mouseout', hideControls);
 
 playButton.addEventListener('click', toggleVideoStatus);
 
