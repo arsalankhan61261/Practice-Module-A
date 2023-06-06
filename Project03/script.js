@@ -4,7 +4,7 @@ const stopButton = document.getElementById('stopBtn');
 const progressBar = document.getElementById('progressBar');
 const time = document.getElementById('time');
 const controls = document.getElementById('controls');
-
+const volume = document.getElementById('volume');
 
 function toggleVideoStatus() {
     if ( video.paused ) {
@@ -24,6 +24,7 @@ function updateIcon() {
 
 function updateProgess() {
     progressBar.value = (video.currentTime / video.duration) * 100;
+    console.log(progressBar.value);
 
     let minutes = Math.floor(video.currentTime / 60);
     if ( minutes < 10 ) {
@@ -41,29 +42,36 @@ function updateProgess() {
 function stopVideo() {
     video.currentTime = 0;
     video.pause();
+    video.setAttribute = ('image', './Images/MonolinkOtherSide-Poster.jpg')
 }
 
 function setVideoProgress() {
+    console.log(progressBar.value);
     video.currentTime = (+progressBar.value * video.duration) / 100;
+    console.log(video.duration);
+    console.log(video.currentTime);
 }
 
-// function showControls() {
-//     controls.style.visibility = 'visible';
-// }
+function changeVolumeIcon() {
+    const iconFade = document.querySelector('.fa-solid.fa-volume-high');
+    iconFade.classList.add('fa-fade');
+}
 
-// function hideControls() {
-//     controls.style.visibility = 'hidden ';
-// }
+function defaultVolumeIcon() {
+    const iconFadeRemove = document.querySelector('.fa-solid.fa-volume-high.fa-fade');
+    iconFadeRemove.classList.remove('fa-fade');
+}
 
 video.addEventListener('click', toggleVideoStatus);
 video.addEventListener('pause', updateIcon);
 video.addEventListener('play', updateIcon);
 video.addEventListener('timeupdate', updateProgess);
-// video.addEventListener('mouseover', showControls);
-// video.addEventListener('mouseout', hideControls);
 
 playButton.addEventListener('click', toggleVideoStatus);
 
 stopButton.addEventListener('click', stopVideo);
 
 progressBar.addEventListener('change', setVideoProgress);
+
+volume.addEventListener('mousemove', changeVolumeIcon);
+volume.addEventListener('mouseout', defaultVolumeIcon);
