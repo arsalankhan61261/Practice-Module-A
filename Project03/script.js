@@ -5,6 +5,9 @@ const progressBar = document.getElementById('progressBar');
 const time = document.getElementById('time');
 const controls = document.getElementById('controls');
 const volume = document.getElementById('volume');
+const volumeRange = document.querySelector('.volumeRange');
+const volumeProgress = document.querySelector('.volumeProgress');
+const volInput = document.querySelector('.input-div');
 
 function toggleVideoStatus() {
     if ( video.paused ) {
@@ -55,6 +58,9 @@ function setVideoProgress() {
 function changeVolumeIcon() {
     const iconFade = document.querySelector('.fa-solid.fa-volume-high');
     iconFade.classList.add('fa-fade');
+    // controls.style.margin = '0px 2px 0px 0px';
+    volInput.style.width = '52px';
+    volInput.style.height = '3px';
 }
 
 function defaultVolumeIcon() {
@@ -75,3 +81,8 @@ progressBar.addEventListener('change', setVideoProgress);
 
 volume.addEventListener('mousemove', changeVolumeIcon);
 volume.addEventListener('mouseout', defaultVolumeIcon);
+
+volumeRange.addEventListener('input', function(e) {
+    volumeProgress.style.width = volumeRange.value + '%';
+    video.volume = volumeRange.value / 100;
+}, false)

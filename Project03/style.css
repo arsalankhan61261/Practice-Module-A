@@ -65,6 +65,7 @@ h1 {
     cursor: pointer;
     background-color: #575f70;
     border-radius: 4px;
+    margin-left: 40px;
 }
 
 .progressBar::-webkit-slider-thumb {
@@ -141,7 +142,7 @@ h1 {
 }
 
 .volumeRange::-webkit-slider-thumb {
-    background-color: yellow;
+    background-color: red;
     -webkit-appearance: none;
     cursor: pointer;
 }
@@ -150,8 +151,9 @@ h1 {
     margin: 0;
     padding: 0;
     width: 52px;
-    background-color: transparent;
+    background-color: rgb(7, 7, 7);
     outline: none;
+    border-radius: 5px;
 }
 
 .volume [type="range"], [type="range"]::-webkit-slider-thumb {
@@ -164,7 +166,7 @@ h1 {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: white;
+    background: blue;
 }
 
 .volume [type="range"]::-moz-range-thumb {
@@ -173,7 +175,7 @@ h1 {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: white;
+    background: blue;
 }
 
 .volume input {
@@ -186,11 +188,12 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    width: 100%;
-    height: 100%;
+    width: 0px;
     height: 3px;
     margin-left: 20px;
-    background: gray;
+    background: blue;
+    overflow: hidden;
+    transition: width .2s;
 }
 
 .input-div input {
@@ -201,8 +204,9 @@ h1 {
 
 .volumeProgress {
     background: whitesmoke;
-    width: 52px;
+    /* width: 35px; */
     height: 100%;
+    color: red;
 }
 
 @media (max-width: 500px) {
