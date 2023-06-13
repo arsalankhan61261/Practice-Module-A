@@ -63,6 +63,7 @@ function changeVolumeIcon() {
     // volInput.style.height = '3px';
     volume.style.width = '52px';
     progressBar.style.marginLeft = '40px';
+    progressBar.style.transition = '0.1s';
 }
 
 function defaultVolumeIcon() {
@@ -72,6 +73,7 @@ function defaultVolumeIcon() {
     volume.style.width = '0px';
     // volume.style.transition = 'width 1s';
     progressBar.style.marginLeft = '20px';
+    progressBar.style.transition = '0.5s';
 }
 
 video.addEventListener('click', toggleVideoStatus);
