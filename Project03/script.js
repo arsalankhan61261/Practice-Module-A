@@ -59,13 +59,19 @@ function changeVolumeIcon() {
     const iconFade = document.querySelector('.fa-solid.fa-volume-high');
     iconFade.classList.add('fa-fade');
     // controls.style.margin = '0px 2px 0px 0px';
-    volInput.style.width = '52px';
-    volInput.style.height = '3px';
+    volumeRange.style.opacity = '1';
+    // volInput.style.height = '3px';
+    volume.style.width = '52px';
+    progressBar.style.marginLeft = '40px';
 }
 
 function defaultVolumeIcon() {
     const iconFadeRemove = document.querySelector('.fa-solid.fa-volume-high.fa-fade');
     iconFadeRemove.classList.remove('fa-fade');
+    // volumeRange.style.width = '4px';
+    volume.style.width = '0px';
+    // volume.style.transition = 'width 1s';
+    progressBar.style.marginLeft = '20px';
 }
 
 video.addEventListener('click', toggleVideoStatus);
