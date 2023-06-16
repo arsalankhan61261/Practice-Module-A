@@ -225,6 +225,10 @@ h1 {
     color: red;
 }
 
+.fa-solid.fa-volume-high {
+    /* opacity: 0; */
+}
+
 @media (max-width: 500px) {
     .main-container {
         width: 95%;

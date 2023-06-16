@@ -57,7 +57,7 @@ function setVideoProgress() {
 
 function changeVolumeIcon() {
     const iconFade = document.querySelector('.fa-solid.fa-volume-high');
-    iconFade.classList.add('fa-fade');
+    // iconFade.classList.add('fa-fade');
     // controls.style.margin = '0px 2px 0px 0px';
     volumeRange.style.opacity = '1';
     // volInput.style.height = '3px';
@@ -68,7 +68,7 @@ function changeVolumeIcon() {
 
 function defaultVolumeIcon() {
     const iconFadeRemove = document.querySelector('.fa-solid.fa-volume-high.fa-fade');
-    iconFadeRemove.classList.remove('fa-fade');
+    // iconFadeRemove.classList.remove('fa-fade');
     // volumeRange.style.width = '4px';
     volume.style.width = '0px';
     // volume.style.transition = 'width 1s';
@@ -93,4 +93,26 @@ volume.addEventListener('mouseout', defaultVolumeIcon);
 volumeRange.addEventListener('input', function(e) {
     volumeProgress.style.width = volumeRange.value + '%';
     video.volume = volumeRange.value / 100;
+
+    let volumeIcons = document.querySelector('.fa-solid.fa-volume-high');
+    console.log(volumeRange.value);
+    console.log(volumeIcons);
+    if (volumeRange.value == 0 && volumeIcons.classList.contains('fa-volume-high')) {
+        volumeIcons.classList.replace('fa-volume-high', 'fa-volume-mute');
+        // volumeIcons.classList.remove('fa-volume-high');
+        // volumeIcons.classList.add('fa-volume-mute');
+        console.log(volumeIcons.classList.value);
+        volumeIcons = volumeIcons.classList.value
+        console.log(volumeIcons);
+    }
+    // else if (volumeRange.value <= 50 && volumeIcons.classList.contains('fa-volume-high')) {
+    //     console.log(volumeIcons);
+    //     volumeIcons.classList.replace('fa-volume-high', 'fa-volume-low')
+    //     console.log(volumeIcons);
+    // }
+    // else if (volumeRange.value >= 90 && volumeIcons.classList.contains('fa-volume-low')) {
+    //     console.log(volumeIcons);
+    //     volumeIcons.classList.replace('fa-volume-low', 'fa-volume-high')
+    //     console.log(volumeIcons);
+    // }
 }, false)
