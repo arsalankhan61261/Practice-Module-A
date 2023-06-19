@@ -226,11 +226,23 @@ h1 {
 }
 
 .fa-solid.fa-volume-high {
-    /* opacity: 0; */
+    cursor: pointer;
 }
 
-@media (max-width: 500px) {
+.fa-solid.fa-volume-low {
+    cursor: pointer;
+}
+
+.fa-solid.fa-volume-mute {
+    cursor: pointer;
+}
+
+@media (max-width: 850px) {
     .main-container {
         width: 95%;
+    }
+    .volume:hover [type="range"] {
+        width: 42px;
+        transition: width 1.2s;
     }
 }

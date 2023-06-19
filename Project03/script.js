@@ -8,6 +8,12 @@ const volume = document.getElementById('volume');
 const volumeRange = document.querySelector('.volumeRange');
 const volumeProgress = document.querySelector('.volumeProgress');
 const volInput = document.querySelector('.input-div');
+const highVolume = document.querySelector('.fa-volume-high');
+const lowVolume = document.querySelector('.fa-volume-low');
+const muteVolume = document.querySelector('.fa-volume-mute');
+
+lowVolume.style.display = 'none';
+muteVolume.style.display = 'none';
 
 function toggleVideoStatus() {
     if ( video.paused ) {
@@ -57,10 +63,7 @@ function setVideoProgress() {
 
 function changeVolumeIcon() {
     const iconFade = document.querySelector('.fa-solid.fa-volume-high');
-    // iconFade.classList.add('fa-fade');
-    // controls.style.margin = '0px 2px 0px 0px';
     volumeRange.style.opacity = '1';
-    // volInput.style.height = '3px';
     volume.style.width = '52px';
     progressBar.style.marginLeft = '40px';
     progressBar.style.transition = '0.1s';
@@ -68,12 +71,29 @@ function changeVolumeIcon() {
 
 function defaultVolumeIcon() {
     const iconFadeRemove = document.querySelector('.fa-solid.fa-volume-high.fa-fade');
-    // iconFadeRemove.classList.remove('fa-fade');
-    // volumeRange.style.width = '4px';
     volume.style.width = '0px';
-    // volume.style.transition = 'width 1s';
     progressBar.style.marginLeft = '20px';
     progressBar.style.transition = '0.5s';
+}
+
+function muteIcon() {
+    if (muteVolume.style.display != '') {
+        highVolume.style.display = 'none';
+        lowVolume.style.display = 'none';
+        muteVolume.style.display = '';
+        video.volume = 0;
+        volumeRange.value = 0;
+        progressBar.style.marginLeft = '40px';
+        progressBar.style.transition = '0.5s';
+    } else {
+        volumeRange.value = 50;
+        video.volume = volumeRange.value / 100;
+        muteVolume.style.display = 'none';
+        lowVolume.style.display = '';
+        progressBar.style.marginLeft = '40px';
+        progressBar.style.transition = '0.5s';
+        console.log('no');
+    }
 }
 
 video.addEventListener('click', toggleVideoStatus);
@@ -94,25 +114,21 @@ volumeRange.addEventListener('input', function(e) {
     volumeProgress.style.width = volumeRange.value + '%';
     video.volume = volumeRange.value / 100;
 
-    let volumeIcons = document.querySelector('.fa-solid.fa-volume-high');
-    console.log(volumeRange.value);
-    console.log(volumeIcons);
-    if (volumeRange.value == 0 && volumeIcons.classList.contains('fa-volume-high')) {
-        volumeIcons.classList.replace('fa-volume-high', 'fa-volume-mute');
-        // volumeIcons.classList.remove('fa-volume-high');
-        // volumeIcons.classList.add('fa-volume-mute');
-        console.log(volumeIcons.classList.value);
-        volumeIcons = volumeIcons.classList.value
-        console.log(volumeIcons);
+    if (volumeRange.value == 0) {
+        highVolume.style.display = 'none';
+        lowVolume.style.display = 'none';
+        muteVolume.style.display = '';
+    } else if (volumeRange.value <= 50) {
+        highVolume.style.display = 'none';
+        lowVolume.style.display = '';
+        muteVolume.style.display = 'none';
+    } else if (volumeRange.value >= 90) {
+        highVolume.style.display = '';
+        lowVolume.style.display = 'none';
+        muteVolume.style.display = 'none';
     }
-    // else if (volumeRange.value <= 50 && volumeIcons.classList.contains('fa-volume-high')) {
-    //     console.log(volumeIcons);
-    //     volumeIcons.classList.replace('fa-volume-high', 'fa-volume-low')
-    //     console.log(volumeIcons);
-    // }
-    // else if (volumeRange.value >= 90 && volumeIcons.classList.contains('fa-volume-low')) {
-    //     console.log(volumeIcons);
-    //     volumeIcons.classList.replace('fa-volume-low', 'fa-volume-high')
-    //     console.log(volumeIcons);
-    // }
 }, false)
+
+lowVolume.addEventListener('click', muteIcon);
+muteVolume.addEventListener('click', muteIcon);
+highVolume.addEventListener('click', muteIcon);
